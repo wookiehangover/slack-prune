@@ -12,10 +12,6 @@ module.exports = require('yargs')
     default: 1,
     type: 'number'
   })
-  .option('dry', {
-    describe: 'dry run without archiving rooms',
-    boolean: true
-  })
   .option('force', {
     alias: 'f',
     describe: 'Do not prompt before archiving',
