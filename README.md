@@ -1,8 +1,8 @@
-# 💁🗑 slack-prune
+# 🗑 slack-prune
 
 A command line tool for archiving your empty and unused Slack channels.
 
-## 🚀Usage
+## 🚀 Usage
 
 Install with npm:
 
