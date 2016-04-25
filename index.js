@@ -17,11 +17,5 @@ exports.list = (options, done) => {
 }
 
 exports.archive = (options, channel, done) => {
-    slack.channels.archive({ token: options.token, channel: channel.id }, (err, data) => {
-      if (err) {
-        return done(err)
-      }
-
-      done(null, channel)
-    })
+    slack.channels.archive({ token: options.token, channel: channel.id }, done)
 }
