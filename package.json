@@ -1,0 +1,32 @@
+{
+  "name": "slack-prune",
+  "version": "1.0.0",
+  "description": "Clean up your unused Slack channels!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wookiehangover",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^1.0.2",
+    "lodash": "^4.11.1",
+    "slack": "^6.1.0",
+    "yargs": "^4.6.0"
+  },
+  "bin": {
+    "slack-prune": "./cli.js"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wookiehangover/slack-prune.git"
+  },
+  "keywords": [
+    "slack"
+  ],
+  "bugs": {
+    "url": "https://github.com/wookiehangover/slack-prune/issues"
+  },
+  "homepage": "https://github.com/wookiehangover/slack-prune#readme"
+}
