@@ -34,6 +34,28 @@ function createPrompts(channels) {
   })
 }
 
+function confirm(answers) {
+  const confirmed = _.keys(_.pickBy(answers))
+  const question = {
+    type: 'confirm',
+    name: 'ok',
+    message: 'Are you sure you want to continue?',
+    default: true,
+    when: options.force === false
+  }
+
+  hr()
+  console.log(`Warning: ${confirmed.length} channel(s) will be archived!`)
+  return inquirer.prompt(question).then((data) => {
+    if (data.ok !== true) {
+      throw new Error('No channels to archive, exiting...')
+      return
+    }
+
+    return confirmed
+  })
+}
+
 function archive(channel) {
   return new Promise((fulfill, reject) => {
     prune.archive(options, channel, (err, data) => {
@@ -65,28 +87,11 @@ prune.list(options, (err, channels) => {
 
   console.log(`\n--> Found ${channels.length} channels ready to be pruned!`)
   hr()
-  inquirer.prompt(createPrompts(channels))
-    .then((data) => {
-      const confirmed = _.keys(_.pickBy(data))
-      const question = {
-        type: 'confirm',
-        name: 'ok',
-        message: 'Are you sure you want to continue?',
-        default: true,
-        when: options.force === false
-      }
-
-      hr()
-      console.log(`Warning: ${confirmed.length} channel(s) will be archived!`)
-      return inquirer.prompt(question).then(() => confirmed)
-    })
+  inquirer.prompt(createPrompts(channels)).then(confirm)
     .then((confirmed) => {
       return archiveChannels(channels, confirmed).then(() => {
         console.log(`Successfully archived ${confirmed.length} channels`)
       })
     })
-    .catch((err) => {
-      console.error(err)
-      exit(1)
-    })
+    .catch(handleErrors)
 })
