@@ -1,6 +1,6 @@
 {
   "name": "slack-prune",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Clean up your unused Slack channels!",
   "main": "index.js",
   "scripts": {
