@@ -1,6 +1,6 @@
 # 💁🗑 slack-prune
 
-A command line tool for cleaning up your unused Slack channels!
+A command line tool for archiving your empty and unused Slack channels.
 
 ## 🚀Usage
 
